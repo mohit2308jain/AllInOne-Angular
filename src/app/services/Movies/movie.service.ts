@@ -18,7 +18,7 @@ export class MovieService {
     private processMsgService: ProcessHttpMsgService) { }
 
   getMovies(term: String): Observable<any[]> {
-    const link = `/?apikey=${this.key}&s=${term}`;
+    const link = `/?apikey=${this.key}&s=avengers`;
 
     this.http.get<any[]>(OMDBMovieApi + link)
       .pipe(catchError(this.processMsgService.handleError))
@@ -26,12 +26,14 @@ export class MovieService {
       movieIds.Search.map((movieid) => {
         return this.http.get<any[]>(OMDBMovieApi + `/?apikey=${this.key}&i=${movieid.imdbID}`).subscribe((movie) => {
           this.movieDetails = [...this.movieDetails, movie];
+          console.log(this.movieDetails);
         })
       })
+      
     },
     (errMess) => console.log(errMess));
 
-    console.log(this.movieDetails);
+    console.log();
     return
   }
 }
