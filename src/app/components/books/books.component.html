@@ -1,1 +1,8 @@
-<p>books works!</p>
+<div class="container">
+    <h2>Books</h2>
+    <mat-list *ngIf="books">
+        <mat-list-item *ngFor="let book of books">
+            <h5>{{book.volumeInfo.title}}</h5>
+        </mat-list-item>
+    </mat-list>
+</div>

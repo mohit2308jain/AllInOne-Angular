@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { BookService } from '../../services/Book/book.service'
 
 @Component({
   selector: 'app-books',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
 
-  constructor() { }
+  books: any[];
+  errMess: string;
+
+  constructor(private bookService: BookService,
+    @Inject('GoogleBooksApi') private GoogleBooksApi) { }
 
   ngOnInit() {
+    this.bookService.getBooks('java')
+      .subscribe((book) => this.books = book.items,
+      (errMess) => this.errMess = errMess);
   }
 
 }

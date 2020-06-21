@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatListModule } from '@angular/material/list';
 
 import { BookService } from './services/Book/book.service';
 import { MovieService } from './services/Movies/movie.service';
 import { RecipeService } from './services/Recipes/recipe.service';
+import { OMDBMovieApi, EDAMAMRecipeApi, GoogleBooksApi } from './apis/baseURLs';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,12 +35,15 @@ import 'hammerjs';
     HttpClientModule,
     MatButtonModule,
     MatToolbarModule,
-    FlexLayoutModule
+    MatListModule
   ],
   providers: [
     MovieService,
     BookService,
-    RecipeService
+    RecipeService,
+    { provide: 'OMDBMovieApi', useValue: OMDBMovieApi },
+    { provide: 'GoogleBooksApi', useValue: GoogleBooksApi },
+    { provide: 'EDAMAMRecipeApi', useValue: EDAMAMRecipeApi }
   ],
   bootstrap: [AppComponent]
 })
