@@ -19,6 +19,7 @@ export class BookService {
 
   getBooks(term: String): Observable<any[]> {
     const link = `/volumes?q=${term}&maxResults=${this.maxResults}&startIndex=${this.startIndex}`;
+    
     return this.http.get<any[]>(GoogleBooksApi + link)
       .pipe(catchError(this.processMsgService.handleError));
   }

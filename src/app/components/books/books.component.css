@@ -1,0 +1,11 @@
+.imageDimen{
+    height: 240px !important;
+}
+
+.example-card {
+    max-width: 400px;
+    background-color: black;
+    color: white;
+    border: blue solid 3px;
+    margin: 5px;
+}

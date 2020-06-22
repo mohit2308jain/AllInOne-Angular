@@ -17,12 +17,30 @@ export class MovieService {
   constructor(private http: HttpClient,
     private processMsgService: ProcessHttpMsgService) { }
 
+  getMovieIds(term: String): Observable<any[]> {
+    const link = `/?apikey=${this.key}&s=${term}`;
+
+    return this.http.get<any[]>(OMDBMovieApi + link)
+      .pipe(catchError(this.processMsgService.handleError));
+  }
+
+  getMovieDetails(id: String): Observable<any[]> {
+    const link = `/?apikey=${this.key}&i=${id}`;
+
+    return this.http.get<any[]>(OMDBMovieApi + link)
+      .pipe(catchError(this.processMsgService.handleError));
+  }
+
+  /*
   getMovies(term: String): Observable<any[]> {
     const link = `/?apikey=${this.key}&s=avengers`;
 
-    this.http.get<any[]>(OMDBMovieApi + link)
-      .pipe(catchError(this.processMsgService.handleError))
-      .subscribe((movieIds) => {
+    return this.http.get<any[]>(OMDBMovieApi + link)
+      .pipe(catchError(this.processMsgService.handleError));
+  }
+
+  getDetails(term: String) {
+    this.getMovies(term).subscribe((movieIds) => {
       movieIds.Search.map((movieid) => {
         return this.http.get<any[]>(OMDBMovieApi + `/?apikey=${this.key}&i=${movieid.imdbID}`).subscribe((movie) => {
           this.movieDetails = [...this.movieDetails, movie];
@@ -30,10 +48,11 @@ export class MovieService {
         })
       })
       
-    },
-    (errMess) => console.log(errMess));
+    });
 
-    console.log();
-    return
+    return this.movieDetails;
   }
+
+  */
+ 
 }

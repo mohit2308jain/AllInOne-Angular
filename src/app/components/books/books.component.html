@@ -1,8 +1,23 @@
-<div class="container">
-    <h2>Books</h2>
-    <mat-list *ngIf="books">
-        <mat-list-item *ngFor="let book of books">
-            <h5>{{book.volumeInfo.title}}</h5>
-        </mat-list-item>
-    </mat-list>
+<app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
+<div class="container border border-dark my-1" *ngIf="books" >
+    <div class="row">
+        <div *ngFor="let book of books" class="col-12 col-md-4">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title><h3>{{book.volumeInfo.title}}</h3></mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="imageDimen" src={{book.volumeInfo.imageLinks.thumbnail}} alt={{book.volumeInfo.title}}/>
+                <mat-card-content>
+                    <mat-card-title>
+                        Language: {{book.volumeInfo.language}} | PageCount: {{book.volumeInfo.pageCount}}
+                        <br />Publisher: {{book.volumeInfo.publisher}}
+                    </mat-card-title>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="goToLink(book.volumeInfo.previewLink)">See Preview</button>
+                    <button mat-button (click)="goToLink(book.volumeInfo.infoLink)">See Info</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
 </div>

@@ -8,15 +8,20 @@ import { RecipeService } from '../../services/Recipes/recipe.service';
 })
 export class RecipesComponent implements OnInit {
 
+  term: String = '';
   recipes: any[];
   errMess: string;
 
   constructor(private recipeService: RecipeService) { }
 
-  ngOnInit() {
-    this.recipeService.getRecipes('coffee')
+  receiveMessage($event) {
+    this.term = $event;
+    this.recipeService.getRecipes(this.term)
       .subscribe((recipe) => this.recipes = recipe.hits,
       (errMess) => this.errMess = errMess);
+  }
+
+  ngOnInit() {
   }
 
 }

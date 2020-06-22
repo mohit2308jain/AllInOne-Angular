@@ -8,13 +8,28 @@ import { MovieService } from '../../services/Movies/movie.service'
 })
 export class MoviesComponent implements OnInit {
 
-  books: any[];
+  term: String = '';
+  movieIds: any[];
+  movies: any[]= [];
   errMess: string;
 
   constructor(private movieService: MovieService) { }
 
+  receiveMessage($event) {
+    this.term = $event;
+    this.movieService.getMovieIds(this.term)
+      .subscribe((movieids) => {
+        console.log(movieids)
+        movieids.Search.map((movieid) => {
+          this.movieService.getMovieDetails(movieid.imdbID)
+            .subscribe((movie) => {this.movies = [...this.movies, movie]; console.log(this.movies)},
+              (errMess) => this.errMess = errMess);
+        })
+      },
+      (errMess) => this.errMess = errMess);
+  }
+
   ngOnInit() {
-    this.movieService.getMovies('frozen');
   }
 
 }

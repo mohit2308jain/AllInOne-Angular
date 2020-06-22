@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 import { BookService } from './services/Book/book.service';
 import { MovieService } from './services/Movies/movie.service';
@@ -19,6 +20,7 @@ import { BooksComponent } from './components/books/books.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/header/header.component';
 import 'hammerjs';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import 'hammerjs';
     MoviesComponent,
     BooksComponent,
     RecipesComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import 'hammerjs';
     HttpClientModule,
     MatButtonModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [
     MovieService,

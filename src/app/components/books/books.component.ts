@@ -8,16 +8,25 @@ import { BookService } from '../../services/Book/book.service'
 })
 export class BooksComponent implements OnInit {
 
+  term: String = '';
   books: any[];
   errMess: string;
 
   constructor(private bookService: BookService,
     @Inject('GoogleBooksApi') private GoogleBooksApi) { }
-
-  ngOnInit() {
-    this.bookService.getBooks('java')
+  
+  receiveMessage($event) {
+    this.term = $event;
+    this.bookService.getBooks(this.term)
       .subscribe((book) => this.books = book.items,
       (errMess) => this.errMess = errMess);
+  }
+
+  goToLink(link: string){
+    window.open(link, "_blank");
+  }
+
+  ngOnInit() {
   }
 
 }

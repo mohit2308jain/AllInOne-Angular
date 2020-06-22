@@ -1,1 +1,9 @@
-<p>movies works!</p>
+<app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
+<div class="container">
+    <h2>Movies</h2>
+    <mat-list *ngIf="movies">
+        <mat-list-item *ngFor="let movie of movies">
+            <h5>{{movie.Title}}</h5>
+        </mat-list-item>
+    </mat-list>
+</div>
