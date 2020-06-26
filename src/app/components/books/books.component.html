@@ -1,14 +1,18 @@
 <app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
-<div class="container border border-dark my-1" *ngIf="booklist" >
+<div class="container border border-dark my-1" *ngIf="!booklist"></div>
+<div class="container border border-dark my-1" *ngIf="booklist">
     <div class="row">
-        <div *ngFor="let book of booklist.items" class="col-12 col-md-4">
+        <div *ngFor="let book of booklist.items" class="col-12 col-md-6 col-lg-4">
             <mat-card class="example-card">
                 <mat-card-header>
-                    <mat-card-title><h3>{{book.volumeInfo.title}}</h3></mat-card-title>
+                    <mat-card-title><h4>{{book.volumeInfo.title}}</h4></mat-card-title>
                 </mat-card-header>
                 <img mat-card-image class="imageDimen" src={{book.volumeInfo.imageLinks.thumbnail}} alt={{book.volumeInfo.title}}/>
-                <mat-card-content>
-                    <mat-card-title>
+                <mat-card-content class="cardContent">
+                    <mat-card-title class="authors">
+                        <div *ngFor="let author of book.volumeInfo.authors">
+                            <span>{{author}}</span>
+                        </div>
                         Language: {{book.volumeInfo.language}} | PageCount: {{book.volumeInfo.pageCount}}
                         <br />Publisher: {{book.volumeInfo.publisher}}
                     </mat-card-title>

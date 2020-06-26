@@ -4,8 +4,25 @@
 
 .example-card {
     max-width: 400px;
-    background-color: black;
+    background-color: #111;
     color: white;
     border: blue solid 3px;
     margin: 5px;
+}
+
+button{
+    background-color: #007bff !important;
+}
+
+.cardContent{
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+.authors{
+    margin-bottom: 8px !important;
+}
+
+.authors div:first-child{
+    margin-bottom: 0px !important;
 }

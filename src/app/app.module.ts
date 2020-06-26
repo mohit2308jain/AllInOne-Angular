@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { BookService } from './services/Book/book.service';
 import { MovieService } from './services/Movies/movie.service';
@@ -39,7 +40,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     MatButtonModule,
     MatToolbarModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatBadgeModule
   ],
   providers: [
     MovieService,

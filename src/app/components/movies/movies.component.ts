@@ -25,6 +25,7 @@ export class MoviesComponent implements OnInit {
             .subscribe((movie) => this.movies = [...this.movies, movie],
               (errMess) => this.errMess = errMess);
         })
+        
       },
       (errMess) => this.errMess = errMess);
   }

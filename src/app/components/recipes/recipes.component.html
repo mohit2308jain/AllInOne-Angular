@@ -1,9 +1,24 @@
 <app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
-<div class="container">
-    <h2>Recipes</h2>
-    <mat-list *ngIf="recipelist">
-        <mat-list-item *ngFor="let recipe of recipelist.hits">
-            <h5>{{recipe.recipe.label}}</h5>
-        </mat-list-item>
-    </mat-list>
+<div class="container border border-dark my-1" *ngIf="!recipelist"></div>
+<div class="container border border-dark my-1" *ngIf="recipelist">
+    <div class="row">
+        <div *ngFor="let recipe of recipelist.hits" class="col-12 col-md-6 col-lg-4">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title><h3>{{recipe.recipe.label}}</h3></mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="imageDimen" src={{recipe.recipe.image}} alt={{recipe.recipe.label}}/>
+                <mat-card-content>
+                    <mat-card-title>
+                        <span *ngFor="let label of recipe.recipe.healthLabels">
+                            <span class="badge badge-light border border-dark m-1">{{label}}</span>
+                        </span>
+                        <hr class="line"/>
+                        Calories: {{recipe.recipe.calories}}
+                        <br />Time: {{recipe.recipe.totalTime}}
+                    </mat-card-title>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>

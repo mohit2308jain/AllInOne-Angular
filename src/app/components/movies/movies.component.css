@@ -1,0 +1,32 @@
+.imageDimen{
+    height: 240px !important;
+}
+
+.example-card {
+    text-align: center !important;
+    max-width: 400px;
+    background-color: #111;
+    color: white;
+    border: blue solid 3px;
+    margin: 5px;
+}
+
+button{
+    background-color: #007bff !important;
+}
+
+.cardContent{
+    border-bottom: 1px solid white;
+}
+
+.authors{
+    margin-bottom: 8px !important;
+}
+
+.authors div:first-child{
+    margin-bottom: 0px !important;
+}
+
+.line{
+    background-color: white;
+}

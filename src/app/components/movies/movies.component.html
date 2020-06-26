@@ -1,9 +1,24 @@
 <app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
-<div class="container">
-    <h2>Movies</h2>
-    <mat-list *ngIf="movies">
-        <mat-list-item *ngFor="let movie of movies">
-            <h5>{{movie.Title}}</h5>
-        </mat-list-item>
-    </mat-list>
+<div class="container border border-dark my-1" *ngIf="movies" >
+    <div class="row">
+        <div *ngFor="let movie of movies" class="col-12 col-md-6 col-lg-4">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title><h3>{{movie.Title}}</h3></mat-card-title>
+                </mat-card-header>
+                <hr class="line"/>
+                <h5 *ngIf="movie.Poster === 'N/A'">Poster Not Available..</h5>
+                <img *ngIf="movie.Poster" mat-card-image class="imageDimen" src={{movie.Poster}} alt=""/>
+                <mat-card-content>
+                    <mat-card-title>
+                        Rating: {{movie.imdbRating}}
+                        <br />Release Date: {{movie.Released}}
+                    </mat-card-title>
+                    <hr class="line"/>
+                    <h5 *ngIf="movie.Plot === 'N/A'">Plot Not Available..</h5>
+                    <p *ngIf="movie.Plot !== 'N/A'">{{movie.Plot}}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>
