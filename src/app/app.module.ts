@@ -20,8 +20,8 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { BooksComponent } from './components/books/books.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/header/header.component';
-import 'hammerjs';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
