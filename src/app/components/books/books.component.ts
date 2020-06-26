@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { BookService } from '../../services/Book/book.service'
 
+import { BOOKS } from '../../shared/books'; 
+
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -9,7 +11,7 @@ import { BookService } from '../../services/Book/book.service'
 export class BooksComponent implements OnInit {
 
   term: String = '';
-  books: any[];
+  booklist: any;
   errMess: string;
 
   constructor(private bookService: BookService,
@@ -18,7 +20,7 @@ export class BooksComponent implements OnInit {
   receiveMessage($event) {
     this.term = $event;
     this.bookService.getBooks(this.term)
-      .subscribe((book) => this.books = book.items,
+      .subscribe((book) => this.booklist = book,
       (errMess) => this.errMess = errMess);
   }
 

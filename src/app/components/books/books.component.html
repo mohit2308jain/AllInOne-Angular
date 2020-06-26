@@ -1,7 +1,7 @@
 <app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
-<div class="container border border-dark my-1" *ngIf="books" >
+<div class="container border border-dark my-1" *ngIf="booklist" >
     <div class="row">
-        <div *ngFor="let book of books" class="col-12 col-md-4">
+        <div *ngFor="let book of booklist.items" class="col-12 col-md-4">
             <mat-card class="example-card">
                 <mat-card-header>
                     <mat-card-title><h3>{{book.volumeInfo.title}}</h3></mat-card-title>

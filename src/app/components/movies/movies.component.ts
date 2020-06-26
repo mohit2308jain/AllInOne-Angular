@@ -9,7 +9,7 @@ import { MovieService } from '../../services/Movies/movie.service'
 export class MoviesComponent implements OnInit {
 
   term: String = '';
-  movieIds: any[];
+  movieIds: any;
   movies: any[]= [];
   errMess: string;
 
@@ -19,10 +19,10 @@ export class MoviesComponent implements OnInit {
     this.term = $event;
     this.movieService.getMovieIds(this.term)
       .subscribe((movieids) => {
-        console.log(movieids)
-        movieids.Search.map((movieid) => {
+        this.movieIds = movieids;
+        this.movieIds.Search.map((movieid) => {
           this.movieService.getMovieDetails(movieid.imdbID)
-            .subscribe((movie) => {this.movies = [...this.movies, movie]; console.log(this.movies)},
+            .subscribe((movie) => this.movies = [...this.movies, movie],
               (errMess) => this.errMess = errMess);
         })
       },
