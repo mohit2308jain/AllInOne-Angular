@@ -1,5 +1,11 @@
 <app-search-bar (searchEvent)="receiveMessage($event)"></app-search-bar>
-<div class="container border border-dark my-1" *ngIf="movies" >
+<div class="container my-1 text-center" *ngIf="!movieIds">
+    <hr class="border border-dark" />
+    <h2 *ngIf="!isLoading && !errMess">Please Enter Movie Name..</h2>
+    <h2 *ngIf="isLoading">Loading..</h2>
+    <h2 *ngIf="errMess">Movie Not Found!</h2>
+</div>
+<div class="container border border-dark my-1" *ngIf="movies.length" >
     <div class="row">
         <div *ngFor="let movie of movies" class="col-12 col-md-6 col-lg-4">
             <mat-card class="example-card">

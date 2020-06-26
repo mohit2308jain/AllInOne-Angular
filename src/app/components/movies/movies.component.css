@@ -19,14 +19,6 @@ button{
     border-bottom: 1px solid white;
 }
 
-.authors{
-    margin-bottom: 8px !important;
-}
-
-.authors div:first-child{
-    margin-bottom: 0px !important;
-}
-
 .line{
     background-color: white;
 }

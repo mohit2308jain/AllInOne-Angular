@@ -11,14 +11,23 @@ export class RecipesComponent implements OnInit {
   term: String = '';
   recipelist: any;
   errMess: string;
+  isLoading: boolean = false;
 
   constructor(private recipeService: RecipeService) { }
 
   receiveMessage($event) {
+    this.isLoading = true;
     this.term = $event;
     this.recipeService.getRecipes(this.term)
-      .subscribe((recipe) => this.recipelist = recipe,
-      (errMess) => this.errMess = errMess);
+      .subscribe((recipe) => {
+          this.recipelist = recipe;
+          this.isLoading = false;
+        },
+        (errMess) => {
+          this.errMess = errMess;
+          this.isLoading = false;
+        }
+      );
   }
 
   ngOnInit() {

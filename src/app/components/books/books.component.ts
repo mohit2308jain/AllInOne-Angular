@@ -13,15 +13,24 @@ export class BooksComponent implements OnInit {
   term: String = '';
   booklist: any;
   errMess: string;
+  isLoading: boolean = false;
 
   constructor(private bookService: BookService,
     @Inject('GoogleBooksApi') private GoogleBooksApi) { }
   
   receiveMessage($event) {
+    this.isLoading = true;
     this.term = $event;
     this.bookService.getBooks(this.term)
-      .subscribe((book) => this.booklist = book,
-      (errMess) => this.errMess = errMess);
+      .subscribe((book) => {
+          this.booklist = book;
+          this.isLoading = false;
+        },
+        (errMess) => {
+          this.errMess = errMess;
+          this.isLoading = false;
+        }
+      );
   }
 
   goToLink(link: string){
